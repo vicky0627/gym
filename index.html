@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aro’s Den Gym</title>
+  <meta name="description" content="Aro’s Den Gym - Premium Fitness & Body Transformation Center in India. Flexible packages & personal training." />
+  <meta name="keywords" content="Gym, Fitness, Personal Training, Transformation, Packages, India" />
+  <meta name="author" content="Aro’s Den Gym" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <style>
+    html { scroll-behavior: smooth; }
+    * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    body {background: #0d0d0d; color: #fff; overflow-x: hidden; cursor: none;}
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 10000;
+      background: rgba(13,13,13,0.97);
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.16);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2%;
+    }
+    .navbar-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #e50914;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+    .navbar-links a:hover, .navbar-links a.active {
+      background: #e50914;
+      color: #fff;
+    }
+    .navbar-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    @media (max-width: 800px) {
+      .navbar-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #1a1a1a;
+        flex-direction: column;
+        gap: 0;
+        width: 180px;
+        display: none;
+      }
+      .navbar-links.open {
+        display: flex;
+      }
+      .navbar-links a {
+        padding: 12px 24px;
+        border-radius: 0;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+      .navbar {
+        padding: 1rem 6%;
+      }
+    }
+
+    /* Custom Cursor */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 25px;
+      height: 25px;
+      border: 2px solid #e50914;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease, background 0.15s ease;
+      z-index: 9999;
+      background: rgba(0,0,0,0);
+    }
+    .cursor.active {
+      transform: translate(-50%, -50%) scale(2);
+      background: rgba(229,9,20,0.2);
+    }
+
+    header {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1') no-repeat center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.6);
+    }
+    header .content {position: relative; z-index: 1; animation: fadeIn 2s ease;}
+    header h1 {font-size: 3.5rem;}
+    header p {margin: 1rem 0; font-size: 1.2rem;}
+    header a {
+      background:#e50914;
+      padding:12px 25px;
+      color:#fff;
+      border-radius:5px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+    header a:hover {background:#ff1a24;}
+
+    section {
+      padding: 4rem 10%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+    section.show {
+      opacity:1;
+      transform:translateY(0);
+    }
+    h2 {
+      text-align:center;
+      margin-bottom:2rem;
+      font-size:2.5rem;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap:1.5rem;
+    }
+    .card {
+      background:#1a1a1a;
+      padding:2rem;
+      border-radius:15px;
+      text-align:center;
+      transition:0.4s;
+      transform-style: preserve-3d;
+    }
+    .card:hover {
+      transform: rotateY(10deg) scale(1.03);
+      background:#222;
+    }
+    .highlight {border: 2px solid #e50914;}
+
+    .plan-price {color:#e50914; font-size:1.5rem; margin:1rem 0;}
+    .note {font-size: 0.9rem; color: #aaa;}
+
+    form {
+      max-width:600px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+    }
+    input,textarea {
+      padding:12px;
+      border:none;
+      border-radius:8px;
+    }
+    button {
+      padding:12px;
+      border:none;
+      background:#e50914;
+      color:#fff;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1rem;
+    }
+    button:hover {background:#ff1a24;}
+
+    footer {
+      text-align:center;
+      padding:1.5rem;
+      background:#000;
+      margin-top:2rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0; transform:translateY(20px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    @media (max-width: 768px) {
+      header h1 {font-size: 2.2rem;}
+      header p {font-size: 1rem;}
+      section {padding: 2.5rem 5%;}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor"></div>
+
+  <nav>
+    <div class="navbar">
+      <a href="#home" class="navbar-logo">Aro’s Den</a>
+      <button class="navbar-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="navbar-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#packages">Packages</a>
+        <a href="#special">Special</a>
+        <a href="#training">Training</a>
+        <a href="#transformation">Transformation</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#timings">Timings</a>
+        <a href="#join">Join</a>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home">
+    <div class="content">
+      <h1>Aro’s Den Gym</h1>
+      <p>🏋️ Where Warriors Reborn</p>
+      <a href="#join">Join Now</a>
+    </div>
+  </header>
+
+  <section id="packages">
+    <h2>Gym Packages</h2>
+    <div class="grid">
+      <div class="card"><h3>1 Month</h3><p class="plan-price">₹1200</p></div>
+      <div class="card"><h3>3 Months</h3><p class="plan-price">₹3200</p></div>
+      <div class="card"><h3>6 Months</h3><p class="plan-price">₹6000</p></div>
+      <div class="card"><h3>12 Months</h3><p class="plan-price">₹10,000</p></div>
+      <div class="card"><h3>24 Months</h3><p class="plan-price">₹18,000</p></div>
+      <div class="card"><p class="note">One-time Registration Fee: ₹300</p></div>
+    </div>
+  </section>
+
+  <section id="special">
+    <h2>Special Packages</h2>
+    <div class="grid">
+      <div class="card"><h3>Student Package</h3><p class="plan-price">3M ₹3000 / 6M ₹5500</p><p class="note">Group of 3–10 Members</p></div>
+      <div class="card"><h3>Family Package</h3><p class="plan-price">12M ₹21,000</p><p class="note">₹500 registration fee</p></div>
+      <div class="card"><h3>Couples Package</h3><p class="plan-price">6M ₹9000 / 12M ₹16,000</p><p class="note">₹500 registration fee</p></div>
+    </div>
+  </section>
+
+  <section id="training">
+    <h2>Personal Training</h2>
+    <div class="grid">
+      <div class="card"><h3>15 Sessions</h3><p class="plan-price">₹3500</p></div>
+      <div class="card"><h3>30 Sessions</h3><p class="plan-price">₹5500</p></div>
+      <div class="card"><h3>45 Sessions</h3><p class="plan-price">₹8000</p></div>
+      <div class="card"><h3>90 Sessions</h3><p class="plan-price">₹12,000</p></div>
+    </div>
+  </section>
+
+  <section id="transformation">
+    <h2>🔥 Transformation Package</h2>
+    <div class="card highlight">
+      <h3>3 Months – ₹30,000</h3>
+      <p>Includes:</p>
+      <ul style="list-style:none; padding:0;">
+        <li>✔️ 3M Gym Package</li>
+        <li>✔️ 3M Personal Training</li>
+        <li>✔️ 4kg Whey Protein</li>
+        <li>✔️ Gym Bag + Towel</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="facilities">
+    <h2>Facilities</h2>
+    <div class="grid">
+      <div class="card"><h3>Per Day</h3><p class="plan-price">₹150</p></div>
+      <div class="card"><h3>Steam Bath</h3><p class="plan-price">₹200</p></div>
+      <div class="card"><h3>Gym Bag</h3><p class="plan-price">₹300</p></div>
+      <div class="card"><h3>Freelance (1 Client)</h3><p class="plan-price">₹1500</p></div>
+      <div class="card"><h3>Contest Prep (3M)</h3><p class="plan-price">₹5000</p></div>
+    </div>
+  </section>
+
+  <section id="timings">
+    <h2>Timings</h2>
+    <div class="grid">
+      <div class="card"><h3>Mon–Sat</h3><p class="plan-price">5:30 AM – 10:00 PM</p></div>
+      <div class="card"><h3>Sunday</h3><p class="plan-price">7:00 AM – 11:30 AM</p></div>
+    </div>
+  </section>
+
+  <section id="join">
+    <h2>Join Now</h2>
+    <form id="joinForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="number" id="age" placeholder="Your Age" required />
+      <input type="text" id="plan" placeholder="Membership Plan" required />
+      <textarea id="message" placeholder="Any Message"></textarea>
+      <button type="submit">Send to WhatsApp</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Aro’s Den Gym. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Navbar responsiveness
+    const toggle = document.querySelector('.navbar-toggle');
+    const links = document.querySelector('.navbar-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    // Close navbar on link click (mobile)
+    document.querySelectorAll('.navbar-links a').forEach(link => {
+      link.addEventListener('click', () => links.classList.remove('open'));
+    });
+
+    // Make nav highlight current section on scroll
+    const sections = document.querySelectorAll("section,header");
+    const navLinks = document.querySelectorAll('.navbar-links a');
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 80;
+      sections.forEach(section => {
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          let id = section.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+
+    // Scroll animation for sections
+    const reveal = () => {
+      sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+          sec.classList.add("show");
+        }
+      });
+    };
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal);
+
+    // Cursor animation (robust)
+    document.addEventListener("DOMContentLoaded", () => {
+      const cursor = document.querySelector(".cursor");
+      document.addEventListener("mousemove", e => {
+        cursor.style.left = e.pageX + "px";
+        cursor.style.top = e.pageY + "px";
+      });
+      document.addEventListener("mousedown", () => cursor.classList.add("active"));
+      document.addEventListener("mouseup", () => cursor.classList.remove("active"));
+    });
+
+    // WhatsApp form integration
+    document.getElementById("joinForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      let name = document.getElementById("name").value;
+      let age = document.getElementById("age").value;
+      let plan = document.getElementById("plan").value;
+      let msg = document.getElementById("message").value;
+
+      let whatsappMsg = `Hello! 👋\nI am *${name}*, Age: *${age}*.\nInterested in: *${plan}*.\nMessage: ${msg}`;
+      let whatsappUrl = `https://wa.me/916374827119?text=${encodeURIComponent(whatsappMsg)}`;
+      window.open(whatsappUrl, "_blank");
+    });
+  </script>
+</body>
+</html>
