@@ -311,16 +311,50 @@
     </div>
   </section>
 
-  <section id="join">
-    <h2>Join Now</h2>
-    <form id="joinForm">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="number" id="age" placeholder="Your Age" required />
-      <input type="text" id="plan" placeholder="Membership Plan" required />
-      <textarea id="message" placeholder="Any Message"></textarea>
-      <button type="submit">Send to WhatsApp</button>
-    </form>
-  </section>
+ <section id="join">
+  <h2>Join Now</h2>
+  <form id="joinForm">
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="number" id="age" placeholder="Your Age" required />
+
+    <!-- Membership Plan Dropdown -->
+    <select id="plan" required>
+      <option value="">-- Select Membership Plan --</option>
+      <optgroup label="Gym Packages">
+        <option value="1 Month">1 Month – ₹1200</option>
+        <option value="3 Months">3 Months – ₹3200</option>
+        <option value="6 Months">6 Months – ₹6000</option>
+        <option value="12 Months">12 Months – ₹10,000</option>
+        <option value="24 Months">24 Months – ₹18,000</option>
+      </optgroup>
+      <optgroup label="Special Packages">
+        <option value="Student Package">Student Package (3M ₹3000 / 6M ₹5500)</option>
+        <option value="Family Package">Family Package – ₹21,000</option>
+        <option value="Couples Package">Couples Package (6M ₹9000 / 12M ₹16,000)</option>
+      </optgroup>
+      <optgroup label="Personal Training">
+        <option value="15 Sessions">15 Sessions – ₹3500</option>
+        <option value="30 Sessions">30 Sessions – ₹5500</option>
+        <option value="45 Sessions">45 Sessions – ₹8000</option>
+        <option value="90 Sessions">90 Sessions – ₹12,000</option>
+      </optgroup>
+      <optgroup label="Transformation">
+        <option value="3M Transformation">🔥 3M Transformation – ₹30,000</option>
+      </optgroup>
+      <optgroup label="Facilities">
+        <option value="Per Day">Per Day – ₹150</option>
+        <option value="Steam Bath">Steam Bath – ₹200</option>
+        <option value="Gym Bag">Gym Bag – ₹300</option>
+        <option value="Freelance (1 Client)">Freelance (1 Client) – ₹1500</option>
+        <option value="Contest Prep (3M)">Contest Prep (3M) – ₹5000</option>
+      </optgroup>
+    </select>
+
+    <textarea id="message" placeholder="Any Message"></textarea>
+    <button type="submit">Send to WhatsApp</button>
+  </form>
+</section>
+
 
   <footer>
     <p>© 2025 Aro’s Den Gym. All Rights Reserved.</p>
@@ -396,3 +430,4 @@
   </script>
 </body>
 </html>
+
