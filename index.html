@@ -1,433 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aro’s Den Gym</title>
-  <meta name="description" content="Aro’s Den Gym - Premium Fitness & Body Transformation Center in India. Flexible packages & personal training." />
-  <meta name="keywords" content="Gym, Fitness, Personal Training, Transformation, Packages, India" />
-  <meta name="author" content="Aro’s Den Gym" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
+  <title>Aro's Den Gym</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    html { scroll-behavior: smooth; }
     * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif;}
-    body {background: #0d0d0d; color: #fff; overflow-x: hidden; cursor: none;}
+    body {background: #111; color: white; line-height: 1.6;}
 
     /* Navbar */
     nav {
+      background: #000;
+      padding: 15px 30px;
+      position: fixed;
       width: 100%;
-      position: sticky;
       top: 0;
-      left: 0;
-      z-index: 10000;
-      background: rgba(13,13,13,0.97);
-      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.16);
-    }
-    .navbar {
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem 2%;
     }
-    .navbar-logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #e50914;
-      letter-spacing: 2px;
-      text-decoration: none;
-    }
-    .navbar-links {
-      display: flex;
-      gap: 1.2rem;
-    }
-    .navbar-links a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 4px;
-      font-weight: 600;
-      transition: background 0.3s, color 0.3s;
-    }
-    .navbar-links a:hover, .navbar-links a.active {
-      background: #e50914;
-      color: #fff;
-    }
-    .navbar-toggle {
+    .logo {font-size: 1.5rem; font-weight: 700; color: red; letter-spacing: 1px;}
+    .nav-links {display: flex; gap: 20px;}
+    .nav-links a {color: white; text-decoration: none; font-weight: 500; transition: 0.3s;}
+    .nav-links a:hover, .nav-links a.active {color: red;}
+
+    /* Hamburger for mobile */
+    .hamburger {
       display: none;
-      font-size: 2rem;
-      color: #fff;
-      background: none;
-      border: none;
+      font-size: 1.5rem;
       cursor: pointer;
+      color: white;
     }
-    @media (max-width: 800px) {
-      .navbar-links {
+
+    @media screen and (max-width: 768px) {
+      .nav-links {
         position: absolute;
-        top: 100%;
-        right: 0;
-        background: #1a1a1a;
+        top: 60px;
+        right: -100%;
+        background: #000;
+        width: 100%;
         flex-direction: column;
-        gap: 0;
-        width: 180px;
-        display: none;
+        transition: 0.3s;
+        text-align: center;
+        gap: 15px;
+        padding: 20px 0;
       }
-      .navbar-links.open {
-        display: flex;
-      }
-      .navbar-links a {
-        padding: 12px 24px;
-        border-radius: 0;
-      }
-      .navbar-toggle {
-        display: block;
-      }
-      .navbar {
-        padding: 1rem 6%;
-      }
+      .nav-links.show {right: 0;}
+      .hamburger {display: block;}
+      .nav-links a {display: block; padding: 10px 0;}
     }
 
-    /* Custom Cursor */
-    .cursor {
-      position: fixed;
-      top: 0; left: 0;
-      width: 25px;
-      height: 25px;
-      border: 2px solid #e50914;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.15s ease, background 0.15s ease;
-      z-index: 9999;
-      background: rgba(0,0,0,0);
-    }
-    .cursor.active {
-      transform: translate(-50%, -50%) scale(2);
-      background: rgba(229,9,20,0.2);
-    }
-
+    /* Hero */
     header {
       height: 100vh;
-      background: url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1') no-repeat center/cover;
+      background: url('bg3.jpg') center/contain no-repeat;
+      background-color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
     }
-    header::after {
-      content: "";
-      position: absolute;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.6);
+    header .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100%;
+      padding-bottom: 60px;
     }
-    header .content {position: relative; z-index: 1; animation: fadeIn 2s ease;}
-    header h1 {font-size: 3.5rem;}
-    header p {margin: 1rem 0; font-size: 1.2rem;}
     header a {
-      background:#e50914;
-      padding:12px 25px;
-      color:#fff;
-      border-radius:5px;
-      text-decoration:none;
-      font-weight:600;
-      transition:0.3s;
+      padding: 14px 30px;
+      background: red;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
     }
-    header a:hover {background:#ff1a24;}
+    header a:hover {background: darkred;}
 
-    section {
-      padding: 4rem 10%;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease;
-    }
-    section.show {
-      opacity:1;
-      transform:translateY(0);
-    }
-    h2 {
-      text-align:center;
-      margin-bottom:2rem;
-      font-size:2.5rem;
-    }
+    /* Sections */
+    section {padding: 100px 20px; text-align: center; max-width: 1200px; margin: auto;}
+    h2 {color: red; margin-bottom: 40px; font-size: 2rem; text-transform: uppercase; letter-spacing: 2px;}
 
-    .grid {
-      display:grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap:1.5rem;
-    }
+    /* Grid */
+    .grid {display: grid; gap: 25px;}
+    .grid-2 {grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
+    .grid-3 {grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));}
     .card {
-      background:#1a1a1a;
-      padding:2rem;
-      border-radius:15px;
-      text-align:center;
-      transition:0.4s;
-      transform-style: preserve-3d;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 25px 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      text-align: center;
     }
-    .card:hover {
-      transform: rotateY(10deg) scale(1.03);
-      background:#222;
-    }
-    .highlight {border: 2px solid #e50914;}
+    .card:hover {transform: translateY(-5px); border-color: red;}
+    .card h3 {color: white; margin-bottom: 12px; font-size: 1.2rem;}
+    .card p {color: red; font-size: 1rem; font-weight: 600;}
 
-    .plan-price {color:#e50914; font-size:1.5rem; margin:1rem 0;}
-    .note {font-size: 0.9rem; color: #aaa;}
+    /* Contact */
+    #contact p {margin: 12px 0; font-size: 1.1rem;}
+    #contact i {color: red; margin-right: 10px;}
+    #contact a {color: red; text-decoration: none; font-weight: 600;}
+    #contact a:hover {text-decoration: underline;}
 
+    /* Form */
     form {
-      max-width:600px;
-      margin:auto;
-      display:flex;
-      flex-direction:column;
-      gap:1rem;
+      max-width: 400px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid #333;
     }
-    input,textarea {
-      padding:12px;
-      border:none;
-      border-radius:8px;
+    form input, form select, form textarea, form button {
+      width: 100%; padding: 12px; margin: 10px 0;
+      border: none; border-radius: 8px; font-size: 1rem;
     }
-    button {
-      padding:12px;
-      border:none;
-      background:#e50914;
-      color:#fff;
-      border-radius:8px;
-      cursor:pointer;
-      font-size:1rem;
+    form input, form select, form textarea {background: #222; color: white;}
+    form button {
+      background: red; color: white; font-weight: bold; cursor: pointer; transition: 0.3s;
     }
-    button:hover {background:#ff1a24;}
-
-    footer {
-      text-align:center;
-      padding:1.5rem;
-      background:#000;
-      margin-top:2rem;
-    }
-
-    @keyframes fadeIn {
-      from {opacity:0; transform:translateY(20px);}
-      to {opacity:1; transform:translateY(0);}
-    }
-
-    @media (max-width: 768px) {
-      header h1 {font-size: 2.2rem;}
-      header p {font-size: 1rem;}
-      section {padding: 2.5rem 5%;}
-    }
+    form button:hover {background: darkred;}
+    #selected-plan {margin-top:10px; font-weight:bold; color:red;}
+    footer {background: #000; text-align: center; padding: 20px; margin-top: 40px; font-size: 0.9rem;}
   </style>
 </head>
 <body>
-  <div class="cursor"></div>
 
-  <nav>
-    <div class="navbar">
-      <a href="#home" class="navbar-logo">Aro’s Den</a>
-      <button class="navbar-toggle" aria-label="Toggle menu">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="navbar-links">
-        <a href="#home" class="active">Home</a>
-        <a href="#packages">Packages</a>
-        <a href="#special">Special</a>
-        <a href="#training">Training</a>
-        <a href="#transformation">Transformation</a>
-        <a href="#facilities">Facilities</a>
-        <a href="#timings">Timings</a>
-        <a href="#join">Join</a>
-      </div>
-    </div>
-  </nav>
+<!-- Navbar -->
+<nav>
+  <div class="logo">Aro's Den</div>
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <a href="#home" class="active">Home</a>
+    <a href="#packages">Packages</a>
+    <a href="#special">Special</a>
+    <a href="#training">Training</a>
+    <a href="#transformation">Transformation</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#timings">Timings</a>
+    <a href="#contact">Contact</a>
+    <a href="#join">Join Now</a>   
+  </div>
+</nav>
 
-  <header id="home">
-    <div class="content">
-      <h1>Aro’s Den Gym</h1>
-      <p>🏋️ Where Warriors Reborn</p>
-      <a href="#join">Join Now</a>
-    </div>
-  </header>
+<!-- Hero -->
+<header id="home">
+  <div class="content">
+    <a href="#join">Join Now</a>
+  </div>
+</header>
 
-  <section id="packages">
-    <h2>Gym Packages</h2>
-    <div class="grid">
-      <div class="card"><h3>1 Month</h3><p class="plan-price">₹1200</p></div>
-      <div class="card"><h3>3 Months</h3><p class="plan-price">₹3200</p></div>
-      <div class="card"><h3>6 Months</h3><p class="plan-price">₹6000</p></div>
-      <div class="card"><h3>12 Months</h3><p class="plan-price">₹10,000</p></div>
-      <div class="card"><h3>24 Months</h3><p class="plan-price">₹18,000</p></div>
-      <div class="card"><p class="note">One-time Registration Fee: ₹300</p></div>
-    </div>
-  </section>
+<!-- Membership Packages -->
+<section id="packages">
+  <h2>Membership Packages (+300 registration fee)</h2>
+  <div class="grid grid-3">
+    <div class="card"><h3>1 Month</h3><p>₹1200/-</p></div>
+    <div class="card"><h3>3 Months</h3><p>₹3200/-</p></div>
+    <div class="card"><h3>6 Months</h3><p>₹6000/-</p></div>
+    <div class="card"><h3>12 Months</h3><p>₹10000/-</p></div>
+    <div class="card"><h3>24 Months</h3><p>₹18000/-</p></div>
+  </div>
+</section>
 
-  <section id="special">
-    <h2>Special Packages</h2>
-    <div class="grid">
-      <div class="card"><h3>Student Package</h3><p class="plan-price">3M ₹3000 / 6M ₹5500</p><p class="note">Group of 3–10 Members</p></div>
-      <div class="card"><h3>Family Package</h3><p class="plan-price">12M ₹21,000</p><p class="note">₹500 registration fee</p></div>
-      <div class="card"><h3>Couples Package</h3><p class="plan-price">6M ₹9000 / 12M ₹16,000</p><p class="note">₹500 registration fee</p></div>
-    </div>
-  </section>
+<!-- Special Packages -->
+<section id="special">
+  <h2>Special Packages</h2>
+  <div class="grid grid-3">
+    <div class="card"><h3>🎓 Student Package</h3><p>3 Months → ₹3000/- <br>6 Months → ₹5500/- <br>Registration Fee ₹300/-</p></div>
+    <div class="card"><h3>👨‍👩‍👦 Family Package</h3><p>12 Months → ₹21000/- <br>Registration Fee ₹600/-</p></div>
+    <div class="card"><h3>❤️ Couples Package</h3><p>6 Months → ₹9000/- <br>12 Months → ₹16000/- <br>Registration Fee ₹500/-</p></div>
+  </div>
+</section>
 
-  <section id="training">
-    <h2>Personal Training</h2>
-    <div class="grid">
-      <div class="card"><h3>15 Sessions</h3><p class="plan-price">₹3500</p></div>
-      <div class="card"><h3>30 Sessions</h3><p class="plan-price">₹5500</p></div>
-      <div class="card"><h3>45 Sessions</h3><p class="plan-price">₹8000</p></div>
-      <div class="card"><h3>90 Sessions</h3><p class="plan-price">₹12,000</p></div>
-    </div>
-  </section>
+<!-- Training -->
+<section id="training">
+  <h2>Personal Training</h2>
+  <div class="grid grid-2">
+    <div class="card"><h3>15 Sessions</h3><p>₹3500/-</p></div>
+    <div class="card"><h3>30 Sessions</h3><p>₹5500/-</p></div>
+    <div class="card"><h3>45 Sessions</h3><p>₹8000/-</p></div>
+    <div class="card"><h3>90 Sessions</h3><p>₹12000/-</p></div>
+  </div>
+</section>
 
-  <section id="transformation">
-    <h2>🔥 Transformation Package</h2>
-    <div class="card highlight">
-      <h3>3 Months – ₹30,000</h3>
-      <p>Includes:</p>
-      <ul style="list-style:none; padding:0;">
-        <li>✔️ 3M Gym Package</li>
-        <li>✔️ 3M Personal Training</li>
-        <li>✔️ 4kg Whey Protein</li>
-        <li>✔️ Gym Bag + Towel</li>
-      </ul>
-    </div>
-  </section>
+<!-- Transformation -->
+<section id="transformation">
+  <h2>Aro’s Special Transformation Package</h2>
+  <div class="card">
+    <h3>3 Months</h3>
+    <p>₹30000/-</p>
+    <p>Includes:<br>✔ 3 Months Gym Package<br>✔ 3 Months Personal Training<br>✔ 4 KG Whey Protein<br>✔ Gym Bag & Towel</p>
+  </div>
+</section>
 
-  <section id="facilities">
-    <h2>Facilities</h2>
-    <div class="grid">
-      <div class="card"><h3>Per Day</h3><p class="plan-price">₹150</p></div>
-      <div class="card"><h3>Steam Bath</h3><p class="plan-price">₹200</p></div>
-      <div class="card"><h3>Gym Bag</h3><p class="plan-price">₹300</p></div>
-      <div class="card"><h3>Freelance (1 Client)</h3><p class="plan-price">₹1500</p></div>
-      <div class="card"><h3>Contest Prep (3M)</h3><p class="plan-price">₹5000</p></div>
-    </div>
-  </section>
+<!-- Facilities -->
+<section id="facilities">
+  <h2>Gym Facilities</h2>
+  <div class="grid grid-2">
+    <div class="card"><h3>Per Day</h3><p>₹150/-</p></div>
+    <div class="card"><h3>Steam Bath</h3><p>₹200/-</p></div>
+    <div class="card"><h3>Gym Bag</h3><p>₹300/-</p></div>
+    <div class="card"><h3>Freelance (1 Client)</h3><p>₹1500/-</p></div>
+    <div class="card"><h3>Contest Prep (3 Months)</h3><p>₹5000/-</p></div>
+  </div>
+</section>
 
-  <section id="timings">
-    <h2>Timings</h2>
-    <div class="grid">
-      <div class="card"><h3>Mon–Sat</h3><p class="plan-price">5:30 AM – 10:00 PM</p></div>
-      <div class="card"><h3>Sunday</h3><p class="plan-price">7:00 AM – 11:30 AM</p></div>
-    </div>
-  </section>
+<!-- Timings -->
+<section id="timings">
+  <h2>Gym Timings</h2>
+  <div class="grid grid-2">
+    <div class="card"><h3>Mon – Sat</h3><p>5:30 AM – 10:00 PM</p></div>
+    <div class="card"><h3>Sunday</h3><p>7:00 AM – 11:30 AM</p></div>
+  </div>
+</section>
 
- <section id="join">
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact">
+    <p><i class="fas fa-phone"></i> <a href="tel:+916374827119">+91 63748 27119</a></p>
+    <p><i class="fas fa-envelope"></i> <a href="mailto:arosden@gmail.com">arosden@gmail.com</a></p>
+    <p><i class="fas fa-map-marker-alt"></i> <a href="https://maps.google.com?q=Aros+Den+Gym" target="_blank">View Location</a></p>
+  </div>
+</section>
+
+<!-- Join -->
+<section id="join">
   <h2>Join Now</h2>
   <form id="joinForm">
-    <input type="text" id="name" placeholder="Your Name" required />
-    <input type="number" id="age" placeholder="Your Age" required />
-
-    <!-- Membership Plan Dropdown -->
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="number" id="age" placeholder="Your Age" required>
     <select id="plan" required>
-      <option value="">-- Select Membership Plan --</option>
-      <optgroup label="Gym Packages">
-        <option value="1 Month">1 Month – ₹1200</option>
-        <option value="3 Months">3 Months – ₹3200</option>
-        <option value="6 Months">6 Months – ₹6000</option>
-        <option value="12 Months">12 Months – ₹10,000</option>
-        <option value="24 Months">24 Months – ₹18,000</option>
+      <option value="">Select Plan</option>
+
+      <!-- Membership -->
+      <optgroup label="Membership Packages">
+        <option value="Membership|1 Month">1 Month – ₹1200</option>
+        <option value="Membership|3 Months">3 Months – ₹3200</option>
+        <option value="Membership|6 Months">6 Months – ₹6000</option>
+        <option value="Membership|12 Months">12 Months – ₹10000</option>
+        <option value="Membership|24 Months">24 Months – ₹18000</option>
       </optgroup>
-      <optgroup label="Special Packages">
-        <option value="Student Package">Student Package (3M ₹3000 / 6M ₹5500)</option>
-        <option value="Family Package">Family Package – ₹21,000</option>
-        <option value="Couples Package">Couples Package (6M ₹9000 / 12M ₹16,000)</option>
+
+      <!-- Special -->
+      <optgroup label="Student Package">
+        <option value="Student|3 Months">3 Months – ₹3000</option>
+        <option value="Student|6 Months">6 Months – ₹5500</option>
       </optgroup>
+
+      <optgroup label="Family Package">
+        <option value="Family|12 Months">12 Months – ₹21000</option>
+      </optgroup>
+
+      <optgroup label="Couples Package">
+        <option value="Couples|6 Months">6 Months – ₹9000</option>
+        <option value="Couples|12 Months">12 Months – ₹16000</option>
+      </optgroup>
+
+      <!-- Personal Training -->
       <optgroup label="Personal Training">
-        <option value="15 Sessions">15 Sessions – ₹3500</option>
-        <option value="30 Sessions">30 Sessions – ₹5500</option>
-        <option value="45 Sessions">45 Sessions – ₹8000</option>
-        <option value="90 Sessions">90 Sessions – ₹12,000</option>
-      </optgroup>
-      <optgroup label="Transformation">
-        <option value="3M Transformation">🔥 3M Transformation – ₹30,000</option>
-      </optgroup>
-      <optgroup label="Facilities">
-        <option value="Per Day">Per Day – ₹150</option>
-        <option value="Steam Bath">Steam Bath – ₹200</option>
-        <option value="Gym Bag">Gym Bag – ₹300</option>
-        <option value="Freelance (1 Client)">Freelance (1 Client) – ₹1500</option>
-        <option value="Contest Prep (3M)">Contest Prep (3M) – ₹5000</option>
+        <option value="Personal Training|15 Sessions">15 Sessions – ₹3500</option>
+        <option value="Personal Training|30 Sessions">30 Sessions – ₹5500</option>
+        <option value="Personal Training|45 Sessions">45 Sessions – ₹8000</option>
+        <option value="Personal Training|90 Sessions">90 Sessions – ₹12000</option>
       </optgroup>
     </select>
-
-    <textarea id="message" placeholder="Any Message"></textarea>
-    <button type="submit">Send to WhatsApp</button>
+    <p id="selected-plan"></p>
+    <textarea id="message" placeholder="Your Message"></textarea>
+    <button type="submit">Send via WhatsApp</button>
   </form>
 </section>
 
+<!-- Footer -->
+<footer>
+  <p>© 2025 Aro's Den Gym. All rights reserved.</p>
+</footer>
 
-  <footer>
-    <p>© 2025 Aro’s Den Gym. All Rights Reserved.</p>
-  </footer>
-
-  <script>
-    // Navbar responsiveness
-    const toggle = document.querySelector('.navbar-toggle');
-    const links = document.querySelector('.navbar-links');
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
+<script>
+  // Navbar scroll highlight
+  const sections = document.querySelectorAll("section, header");
+  const navLinks = document.querySelectorAll(".nav-links a");
+  window.onscroll = () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      if (pageYOffset >= sectionTop) current = section.getAttribute("id");
     });
-    // Close navbar on link click (mobile)
-    document.querySelectorAll('.navbar-links a').forEach(link => {
-      link.addEventListener('click', () => links.classList.remove('open'));
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) link.classList.add("active");
     });
+  };
 
-    // Make nav highlight current section on scroll
-    const sections = document.querySelectorAll("section,header");
-    const navLinks = document.querySelectorAll('.navbar-links a');
-    window.addEventListener('scroll', () => {
-      let fromTop = window.scrollY + 80;
-      sections.forEach(section => {
-        if (
-          section.offsetTop <= fromTop &&
-          section.offsetTop + section.offsetHeight > fromTop
-        ) {
-          let id = section.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === id) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    });
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navMenu.classList.toggle('show'));
 
-    // Scroll animation for sections
-    const reveal = () => {
-      sections.forEach(sec => {
-        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-          sec.classList.add("show");
-        }
-      });
-    };
-    window.addEventListener("scroll", reveal);
-    window.addEventListener("load", reveal);
+  // Registration fees mapping (display only)
+  const registrationFees = {
+    "Membership": 300,
+    "Student": 300,
+    "Family": 600,
+    "Couples": 500
+  };
 
-    // Cursor animation (robust)
-    document.addEventListener("DOMContentLoaded", () => {
-      const cursor = document.querySelector(".cursor");
-      document.addEventListener("mousemove", e => {
-        cursor.style.left = e.pageX + "px";
-        cursor.style.top = e.pageY + "px";
-      });
-      document.addEventListener("mousedown", () => cursor.classList.add("active"));
-      document.addEventListener("mouseup", () => cursor.classList.remove("active"));
-    });
+  // Display selected plan with registration fee (page only)
+  const planSelect = document.getElementById('plan');
+  const display = document.getElementById('selected-plan');
+  planSelect.addEventListener('change', function() {
+    if (!this.value) {
+      display.textContent = "";
+    } else {
+      const [packageType, duration] = this.value.split('|');
+      const fee = registrationFees[packageType];
+      display.textContent = fee ? `${packageType} Package – ${duration} + ₹${fee} Registration Fee` : `${packageType} Package – ${duration}`;
+    }
+  });
 
-    // WhatsApp form integration
-    document.getElementById("joinForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      let name = document.getElementById("name").value;
-      let age = document.getElementById("age").value;
-      let plan = document.getElementById("plan").value;
-      let msg = document.getElementById("message").value;
+  // WhatsApp form submission (no registration fee)
+  document.getElementById("joinForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const planValue = planSelect.value;
+    const message = document.getElementById("message").value;
+    if (!planValue) return;
+    const [packageType, duration] = planValue.split('|');
+    const whatsappMessage = `Hello, my name is ${name}, age ${age}. I am interested in the ${packageType} Package – ${duration}. ${message}`;
+    window.open(`https://wa.me/916374827119?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+  });
+</script>
 
-      let whatsappMsg = `Hello! 👋\nI am *${name}*, Age: *${age}*.\nInterested in: *${plan}*.\nMessage: ${msg}`;
-      let whatsappUrl = `https://wa.me/916374827119?text=${encodeURIComponent(whatsappMsg)}`;
-      window.open(whatsappUrl, "_blank");
-    });
-  </script>
 </body>
 </html>
-
