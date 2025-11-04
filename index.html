@@ -81,6 +81,70 @@
       color: #E50914;
       border-bottom: 2px solid #E50914;
     }
+        /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 18px;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .hamburger span {
+      height: 3px;
+      width: 100%;
+      background: #E50914;
+      border-radius: 3px;
+      transition: all 0.4s ease;
+    }
+
+    /* TOGGLE ANIMATION */
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7.5px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7.5px) rotate(-45deg);
+    }
+
+    /* MOBILE MENU STYLING */
+    @media (max-width: 850px) {
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background: rgba(15, 15, 15, 0.98);
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 0;
+        display: none;
+        border-top: 1px solid rgba(229,9,20,0.3);
+      }
+
+      .nav-links.show {
+        display: flex;
+        animation: fadeInMenu 0.3s ease-in-out;
+      }
+
+      .nav-links a {
+        padding: 12px 0;
+        font-size: 1.1rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @keyframes fadeInMenu {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
 
     /* HERO */
     header {
@@ -225,13 +289,14 @@
 </head>
 
 <body>
-  <!-- NAVBAR -->
+    <!-- NAVBAR -->
   <nav id="navbar">
     <a href="#home" class="logo" data-aos="fade-down">
       <img src="logo.jpg" alt="Aro's Den Logo" />
       <span><span class="white">Aro’s</span><span class="red"> Den</span></span>
     </a>
-    <div class="nav-links">
+
+    <div class="nav-links" id="navLinks">
       <a href="#home" class="active">Home</a>
       <a href="#packages">Packages</a>
       <a href="#special">Special</a>
@@ -240,7 +305,15 @@
       <a href="#contact">Contact</a>
       <a href="#join">Join Now</a>
     </div>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
+
 
   <!-- HERO -->
   <header id="home">
@@ -358,6 +431,24 @@
       navbar.classList.toggle("scrolled", window.scrollY > 50);
     });
 
+        // --- Mobile Navbar Toggle ---
+    const hamburger = document.getElementById("hamburger");
+    const navLinksContainer = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navLinksContainer.classList.toggle("show");
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navLinksContainer.classList.remove("show");
+      });
+    });
+
+
     // Navbar active link
     navLinks.forEach(link => {
       link.addEventListener("click", () => {
@@ -427,5 +518,6 @@ ${msg ? "Message: " + msg : ""}`;
   </script>
 </body>
 </html>
+
 
 
