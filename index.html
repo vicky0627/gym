@@ -387,17 +387,45 @@
       }
     });
 
-    // WhatsApp redirect
+        // WhatsApp redirect with plan label
     document.getElementById("joinForm").addEventListener("submit", (e) => {
       e.preventDefault();
+
       const name = document.getElementById("name").value;
       const age = document.getElementById("age").value;
-      const planVal = plan.options[plan.selectedIndex].text;
       const msg = document.getElementById("message").value;
-      const url = `https://wa.me/916374827119?text=Hi, I'm ${name} (${age} yrs). Interested in ${planVal}. ${msg}`;
+      const planSelect = document.getElementById("plan");
+      const selectedOption = planSelect.options[planSelect.selectedIndex];
+
+      // Extract plan label and text
+      const optgroup = selectedOption.parentElement.label || "Selected Plan";
+      const planVal = selectedOption.text;
+
+      // Determine registration fee based on plan
+      const val = planSelect.value.toLowerCase();
+      let regFee = "";
+      if (val.includes("membership") || val.includes("student")) {
+        regFee = "+ ₹300 Registration Fee";
+      } else if (val.includes("family")) {
+        regFee = "+ ₹600 Registration Fee";
+      } else if (val.includes("couples")) {
+        regFee = "+ ₹500 Registration Fee";
+      }
+
+      // Create formatted message
+      const text = `Hi, I'm ${name} (${age} yrs).
+Plan Category: ${optgroup}
+Selected Plan: ${planVal}
+${regFee ? regFee + "\n" : ""}
+${msg ? "Message: " + msg : ""}`;
+
+      const encodedText = encodeURIComponent(text);
+      const url = `https://wa.me/916374827119?text=${encodedText}`;
       window.open(url, "_blank");
     });
+
   </script>
 </body>
 </html>
+
 
