@@ -291,6 +291,33 @@ nav.scrolled {
       font-size: 0.9rem;
       border-top: 1px solid #222;
     }
+
+    /* --- MOBILE RESPONSIVE LOGO FIX --- */
+@media (max-width: 850px) {
+  .logo {
+    gap: 8px;
+    transform: translateX(-10px); /* moves slightly left */
+  }
+
+  .logo img {
+    height: 45px; /* smaller logo */
+    width: auto;
+  }
+
+  .logo span {
+    font-size: 1.6rem; /* smaller text */
+    letter-spacing: 1px;
+  }
+
+  nav {
+    padding: 15px 20px; /* tighter navbar spacing */
+  }
+
+  .hamburger {
+    transform: translateX(5px); /* ensure it doesn’t overlap the logo */
+  }
+}
+
   </style>
 </head>
 
@@ -524,6 +551,7 @@ ${msg ? "Message: " + msg : ""}`;
   </script>
 </body>
 </html>
+
 
 
 
