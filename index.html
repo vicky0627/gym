@@ -301,14 +301,15 @@
     </div>
   </section>
 
-  <!-- JOIN -->
+   <!-- JOIN -->
   <section id="join">
     <h2 data-aos="fade-up">Start Your Journey</h2>
     <form id="joinForm" data-aos="fade-up">
       <input type="text" id="name" placeholder="Your Name" required />
       <input type="number" id="age" placeholder="Your Age" required />
-      <select id="plan" size="6" required>
-       <option value="">Select Plan</option>
+
+      <select id="plan" required>
+        <option value="">Select Plan</option>
         <optgroup label="Membership Packages">
           <option value="Membership|1 Month">1 Month – ₹1200</option>
           <option value="Membership|3 Months">3 Months – ₹3200</option>
@@ -334,6 +335,7 @@
           <option value="Personal Training|90 Sessions">90 Sessions – ₹12000</option>
         </optgroup>
       </select>
+
       <div id="regFee"></div>
       <textarea id="message" placeholder="Your Message (Optional)"></textarea>
       <button type="submit">Send Inquiry via WhatsApp</button>
@@ -351,11 +353,12 @@
     const navbar = document.getElementById("navbar");
     const navLinks = document.querySelectorAll(".nav-links a");
 
+    // Navbar scroll effect
     window.addEventListener("scroll", () => {
       navbar.classList.toggle("scrolled", window.scrollY > 50);
     });
 
-    // Make nav link red when clicked
+    // Navbar active link
     navLinks.forEach(link => {
       link.addEventListener("click", () => {
         navLinks.forEach(l => l.classList.remove("active"));
@@ -363,13 +366,25 @@
       });
     });
 
-    // Show +reg fee only
+    // Registration Fee Logic
     const plan = document.getElementById("plan");
     const regFee = document.getElementById("regFee");
 
     plan.addEventListener("change", () => {
-      if (plan.value) regFee.textContent = "+ ₹300 Registration Fee";
-      else regFee.textContent = "";
+      const val = plan.value.toLowerCase();
+
+      if (val.includes("membership") || val.includes("student")) {
+        regFee.textContent = "+ ₹300 Registration Fee";
+      } 
+      else if (val.includes("family")) {
+        regFee.textContent = "+ ₹600 Registration Fee";
+      } 
+      else if (val.includes("couples")) {
+        regFee.textContent = "+ ₹500 Registration Fee";
+      } 
+      else {
+        regFee.textContent = ""; // No fee for personal training
+      }
     });
 
     // WhatsApp redirect
@@ -385,3 +400,4 @@
   </script>
 </body>
 </html>
+
