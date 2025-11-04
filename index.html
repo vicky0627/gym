@@ -5,18 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/jpeg" href="logo.jpg">
   <title>Aro's Den Gym - Premium Fitness</title>
-  <!-- --- PREMIUM: Added new font for headings --- -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
 
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+  <style>
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: #0f0f0f; 
@@ -40,9 +37,8 @@
     nav.scrolled {
       background: rgba(15, 15, 15, 0.85);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 15px 40px;
       border-bottom: 1px solid #222;
+      padding: 15px 40px;
     }
 
     .logo {
@@ -63,21 +59,21 @@
       font-weight: 800;
     }
     .logo .white { color: white; }
-    .logo .black { color: black; }
+    .logo .red { color: #E50914; }
 
     nav.scrolled .logo img { height: 50px; }
     nav.scrolled .logo span { font-size: 1.8rem; }
 
-    .nav-links {display: flex; gap: 25px;}
+    .nav-links { display: flex; gap: 25px; }
     .nav-links a {
-      color: white; 
-      text-decoration: none; 
-      font-weight: 600; 
-      transition: 0.3s; 
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
       padding-bottom: 5px;
       border-bottom: 2px solid transparent;
     }
-    .nav-links a:hover {color: #E50914;}
+    .nav-links a:hover { color: #E50914; }
     .nav-links a.active {
       color: #E50914;
       border-bottom: 2px solid #E50914;
@@ -96,14 +92,13 @@
       width: 28px;
       height: 3px;
       margin: 6px auto;
-      transition: all 0.3s ease-in-out;
       background-color: white;
       border-radius: 2px;
+      transition: all 0.3s ease-in-out;
     }
 
     @media screen and (max-width: 768px) {
       nav { padding: 15px 20px; }
-      nav.scrolled { padding: 10px 20px; }
       .logo img { height: 50px; }
       .logo span { font-size: 1.8rem; }
       nav.scrolled .logo img { height: 45px; }
@@ -116,14 +111,13 @@
         width: 70%;
         height: 100vh;
         flex-direction: column;
-        transition: 0.4s ease-in-out;
         align-items: center;
         justify-content: center;
         gap: 30px;
+        transition: 0.4s ease-in-out;
       }
-      .nav-links.show {right: 0;}
-      .hamburger {display: block;}
-      .nav-links a.active {border-bottom: none;}
+      .nav-links.show { right: 0; }
+      .hamburger { display: block; }
       .hamburger.active .bar:nth-child(2) { opacity: 0; }
       .hamburger.active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
       .hamburger.active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
@@ -135,20 +129,13 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center center;
-      background-color: #000000; 
+      background-color: #000;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       position: relative;
       overflow: hidden;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.0);
     }
     header .content {
       position: relative;
@@ -176,52 +163,50 @@
       transform: scale(1.05);
       animation-play-state: paused;
     }
-
     @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.7); }
-      70% { transform: scale(1.05); box-shadow: 0 0 10px 25px rgba(229, 9, 20, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229, 9, 20, 0); }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229,9,20,0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 10px 25px rgba(229,9,20,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(229,9,20,0); }
     }
 
-    section {padding: 120px 20px; text-align: center; max-width: 1200px; margin: auto; overflow-x: hidden;}
+    section { padding: 120px 20px; text-align: center; max-width: 1200px; margin: auto; }
     h2 {
-      color: #E50914; 
-      margin-bottom: 50px; 
-      font-size: 3.5rem; 
-      text-transform: uppercase; 
+      color: #E50914;
+      margin-bottom: 50px;
+      font-size: 3.5rem;
+      text-transform: uppercase;
       letter-spacing: 3px;
       font-family: 'Bebas Neue', sans-serif;
     }
 
-    .grid {display: grid; gap: 30px;}
-    .grid-2 {grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));}
-    .grid-3 {grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));}
+    .grid { display: grid; gap: 30px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+
     .card {
       background: #1a1a1a;
       border: 1px solid #333;
       padding: 30px 25px;
       border-radius: 15px;
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      text-align: center;
     }
     .card:hover {
-      transform: translateY(-10px); 
+      transform: translateY(-10px);
       border-color: #E50914;
-      box-shadow: 0 10px 20px rgba(229, 9, 20, 0.2);
+      box-shadow: 0 10px 20px rgba(229,9,20,0.2);
     }
     .card h3 {
-      color: white; 
-      margin-bottom: 15px; 
+      color: white;
+      margin-bottom: 15px;
       font-size: 1.8rem;
       font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 1px;
     }
-    .card p {color: #ccc; font-size: 1rem; font-weight: 400;}
-    .card p b {color: #E50914; font-weight: 600; font-size: 1.2rem;}
+    .card p { color: #ccc; }
+    .card p b { color: #E50914; font-weight: 600; font-size: 1.2rem; }
 
-    #contact i {color: #E50914; margin-right: 10px;}
-    #contact a {color: #E50914; text-decoration: none; font-weight: 600; font-size: 1.2rem;}
-    #contact a:hover {text-decoration: underline;}
+    #contact i { color: #E50914; margin-right: 10px; }
+    #contact a { color: #E50914; text-decoration: none; font-weight: 600; font-size: 1.2rem; }
+    #contact a:hover { text-decoration: underline; }
 
     form {
       max-width: 450px;
@@ -234,23 +219,23 @@
     form input, form select, form textarea, form button {
       width: 100%; padding: 15px; margin-bottom: 15px;
       border: 1px solid #444; border-radius: 8px; font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
       background: #222; color: white;
     }
     form button {
       background: #E50914; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; border: none;
     }
-    form button:hover {background: #f1f1f1; color: #E50914;}
-    #selected-plan {margin-top: -5px; margin-bottom: 15px; font-weight:bold; color:#E50914; min-height: 1.2em;}
-    .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
-    footer {background: #0f0f0f; text-align: center; padding: 30px; margin-top: 60px; font-size: 0.9rem; border-top: 1px solid #222;}
+    form button:hover { background: #f1f1f1; color: #E50914; }
+    #selected-plan { margin-top: -5px; margin-bottom: 15px; font-weight: bold; color: #E50914; }
+
+    footer { background: #0f0f0f; text-align: center; padding: 30px; margin-top: 60px; border-top: 1px solid #222; }
   </style>
 </head>
 <body>
+
   <nav id="navbar">
     <a href="#home" class="logo">
       <img src="logo.jpg" alt="Aro's Den Logo">
-      <span><span class="white">Aro’s</span><span class="black"> Den</span></span>
+      <span><span class="white">Aro’s</span><span class="red"> Den</span></span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -270,32 +255,106 @@
     <div class="content"><a href="#join">Join The Elite</a></div>
   </header>
 
-  <!-- (Keep the rest of your sections exactly as before) -->
-  
+  <section id="packages">
+    <h2 data-aos="fade-up">Membership Packages</h2>
+    <div class="grid grid-3">
+      <div class="card" data-aos="fade-up"><h3>1 Month</h3><p><b>₹1200/-</b> + Reg. Fee</p></div>
+      <div class="card" data-aos="fade-up"><h3>3 Months</h3><p><b>₹3200/-</b> + Reg. Fee</p></div>
+      <div class="card" data-aos="fade-up"><h3>6 Months</h3><p><b>₹6000/-</b> + Reg. Fee</p></div>
+      <div class="card" data-aos="fade-up"><h3>12 Months</h3><p><b>₹10000/-</b> + Reg. Fee</p></div>
+      <div class="card" data-aos="fade-up"><h3>24 Months</h3><p><b>₹18000/-</b> + Reg. Fee</p></div>
+    </div>
+  </section>
+
+  <section id="special">
+    <h2 data-aos="fade-up">Special Packages</h2>
+    <div class="grid grid-3">
+      <div class="card" data-aos="fade-right"><h3>🎓 Student</h3><p>3 Months → <b>₹3000/-</b><br>6 Months → <b>₹5500/-</b><br>Reg. Fee ₹300/-</p></div>
+      <div class="card" data-aos="zoom-in"><h3>👨‍👩‍👦 Family</h3><p>12 Months → <b>₹21000/-</b><br>Reg. Fee ₹600/-</p></div>
+      <div class="card" data-aos="fade-left"><h3>❤️ Couples</h3><p>6 Months → <b>₹9000/-</b><br>12 Months → <b>₹16000/-</b><br>Reg. Fee ₹500/-</p></div>
+    </div>
+  </section>
+
+  <section id="training">
+    <h2 data-aos="fade-up">Personal Training</h2>
+    <div class="grid grid-2">
+      <div class="card"><h3>15 Sessions</h3><p><b>₹3500/-</b></p></div>
+      <div class="card"><h3>30 Sessions</h3><p><b>₹5500/-</b></p></div>
+      <div class="card"><h3>45 Sessions</h3><p><b>₹8000/-</b></p></div>
+      <div class="card"><h3>90 Sessions</h3><p><b>₹12000/-</b></p></div>
+    </div>
+  </section>
+
+  <section id="transformation">
+    <h2 data-aos="fade-up">Aro’s Special Transformation Package</h2>
+    <div class="card">
+      <h3>3 Months</h3>
+      <p><b>₹30000/-</b></p>
+      <p>Includes:<br>✔ 3 Months Gym Membership<br>✔ 3 Months Personal Training<br>✔ 4 KG Whey Protein<br>✔ Premium Gym Bag & Towel</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 data-aos="fade-up">Contact Us</h2>
+    <p><i class="fas fa-phone"></i><a href="tel:+916374827119">+91 63748 27119</a></p>
+    <p><i class="fas fa-envelope"></i><a href="mailto:arosdengym@gmail.com">arosdengym@gmail.com</a></p>
+    <p><i class="fas fa-map-marker-alt"></i><a href="https://maps.google.com/?q=Aro's+Den+Gym" target="_blank">View Location</a></p>
+    <p><i class="fab fa-instagram"></i><a href="https://www.instagram.com/_artless_vicky" target="_blank">@arosdengym</a></p>
+  </section>
+
+  <section id="join">
+    <h2 data-aos="fade-up">Start Your Journey</h2>
+    <form id="joinForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="number" id="age" placeholder="Your Age" required>
+      <select id="plan" required>
+        <option value="">Select Plan</option>
+        <optgroup label="Membership Packages">
+          <option value="Membership|1 Month">1 Month – ₹1200</option>
+          <option value="Membership|3 Months">3 Months – ₹3200</option>
+          <option value="Membership|6 Months">6 Months – ₹6000</option>
+          <option value="Membership|12 Months">12 Months – ₹10000</option>
+          <option value="Membership|24 Months">24 Months – ₹18000</option>
+        </optgroup>
+        <optgroup label="Student Package">
+          <option value="Student|3 Months">3 Months – ₹3000</option>
+          <option value="Student|6 Months">6 Months – ₹5500</option>
+        </optgroup>
+        <optgroup label="Family Package">
+          <option value="Family|12 Months">12 Months – ₹21000</option>
+        </optgroup>
+        <optgroup label="Couples Package">
+          <option value="Couples|6 Months">6 Months – ₹9000</option>
+          <option value="Couples|12 Months">12 Months – ₹16000</option>
+        </optgroup>
+        <optgroup label="Personal Training">
+          <option value="Personal Training|15 Sessions">15 Sessions – ₹3500</option>
+          <option value="Personal Training|30 Sessions">30 Sessions – ₹5500</option>
+          <option value="Personal Training|45 Sessions">45 Sessions – ₹8000</option>
+          <option value="Personal Training|90 Sessions">90 Sessions – ₹12000</option>
+        </optgroup>
+      </select>
+      <p id="selected-plan"></p>
+      <textarea id="message" placeholder="Your Message (Optional)"></textarea>
+      <button type="submit">Send Inquiry via WhatsApp</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Aro's Den Gym. All rights reserved.</p>
+  </footer>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+
     const navbar = document.getElementById('navbar');
-    const header = document.getElementById('home');
-    const navMenu = document.getElementById('nav-links');
     const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelectorAll(".nav-links a");
-    const sections = document.querySelectorAll("section, header");
+    const navMenu = document.getElementById('nav-links');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const planSelect = document.getElementById('plan');
+    const display = document.getElementById('selected-plan');
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    });
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('show');
-    });
-
-    navLinks.forEach(link => link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('show');
-    }));
-  </script>
-</body>
-</html>
+      else navbar
