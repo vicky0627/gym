@@ -115,7 +115,7 @@ nav.scrolled {
       transform: translateY(-7.5px) rotate(-45deg);
     }
 
-   /* --- MODERN MOBILE NAVBAR STYLE --- */
+/* --- MODERN CLEAN MOBILE NAVBAR STYLE (NO UNDERLINE) --- */
 @media (max-width: 850px) {
   nav {
     padding: 15px 25px;
@@ -187,27 +187,27 @@ nav.scrolled {
     animation: fadeSlideDown 0.35s ease-in-out;
   }
 
-  /* Menu Items */
+  /* Mobile Menu Items */
   .nav-links a {
     color: #ddd;
     font-size: 1rem;
     font-weight: 600;
     padding: 10px 0;
-    margin: 3px 0;
+    margin: 4px 0;
     transition: all 0.3s ease;
-    border-bottom: 2px solid transparent;
+    border: none !important; /* removes underline */
   }
 
   .nav-links a:hover {
     color: #fff;
-    border-bottom: 2px solid #E50914;
+    text-shadow: 0 0 8px rgba(229,9,20,0.6); /* soft glow instead of underline */
   }
-  .nav-links a.active {
-  color: #E50914;
-  border-bottom: 2px solid #E50914;
-  text-shadow: 0 0 8px rgba(229,9,20,0.5);
-}
 
+  .nav-links a.active {
+    color: #E50914;
+    text-shadow: 0 0 8px rgba(229,9,20,0.5);
+    border: none;
+  }
 
   /* Slide Down Animation */
   @keyframes fadeSlideDown {
@@ -215,6 +215,7 @@ nav.scrolled {
     to { opacity: 1; transform: translateY(0); }
   }
 }
+
 
 
     @keyframes fadeInMenu {
@@ -623,6 +624,7 @@ ${msg ? "Message: " + msg : ""}`;
   </script>
 </body>
 </html>
+
 
 
 
